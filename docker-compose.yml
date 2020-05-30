@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  database:
+    build: ./database/.
+    restart: always
+    container_name: kcdb_c
+    env_file:
+    - ./variables.env 
+    ports:
+    - 3306:3306
+    volumes:
+    - ./database/initDB.sql:/docker-entrypoint-initdb.d/initDB.sql
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --database=dbDatabase --execute \"SELECT * FROM webresponse;\""
+      interval: 30s
+      timeout: 3s
+      retries: 10
+    networks:
+    - lognet
+
+  app:
+    build: .
+    restart: always
+    container_name: kcapp_c
+    env_file:
+    - ./variables.env
+    ports:
+     - 8080:8080
+    links:
+    - database
+    depends_on:
+    - database
+    networks:
+    - lognet
+
+
+networks:
+  lognet:
+    driver: bridge
