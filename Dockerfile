@@ -16,8 +16,6 @@ RUN sh -x makeall.sh
 FROM ubuntu:bionic AS step2
 
 RUN apt-get update && \
-    apt-get install -y curl && \
-    apt-get install -y mysql-client && \
     apt-get install -y libmysqlclient-dev
 
 RUN mkdir /supervisor
