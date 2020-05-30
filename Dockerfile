@@ -20,7 +20,6 @@ RUN apt-get update && \
 
 RUN mkdir /supervisor
 COPY --from=step1 /tmp/myapp/supervisor/supervisor /supervisor
-COPY --from=step1 /tmp/myapp/initDB.sql /supervisor
 
 EXPOSE $SUPERVISOR_LISTENPORT
 
