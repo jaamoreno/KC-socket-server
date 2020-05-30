@@ -1,24 +1,20 @@
 #Práctica modulo contenedores (KeepCoding school)
-
+=================================================
 Práctica final del módulo denominado "contenedores" del 2º Bootcamp DevOps de Keepcoding 
 
 
 
 #Descripcion de la aplicacion
-
+=============================
 Se trata de un servidor de sockets codificado en C que sirve peticiones TCP (HTTP implementado parcialmente) 
 por un puerto configurable mediante variable de entorno SUPERVISOR_LISTENPORT.
 En función del parámetro web recibido configura una respuesta (XML) extraida de una tabla (WEBRESPONSE) de una 
 BB.DD MySQL a la que se conecta mediante los parámetros definidos en las variables de entorno:
 
 SUPERVISOR_DBUSER
-
 SUPERVISOR_DBPASS
-
 SUPERVISOR_DBHOST
-
 SUPERVISOR_DBPORT
-
 SUPERVISOR_DBNAME
 
 
@@ -35,13 +31,13 @@ tiene dependencias con la version de la librería cliente de MySQL.
 
 
 #Requisitos para hacerla funcionar
-
+==================================
 Para ejecutar esta aplicación es necesario tener instalada la última versión de Docker y Minicube.
 
 
 
-#Instrucciones para ejecutarla en local.
-
+#Instrucciones para ejecutarla en local
+=======================================
 La forma más rápida de ponerla en funcionamiento es utilizar docker-compose en la siguiente secuencia de 
 comandos:
 
@@ -51,5 +47,5 @@ comandos:
 
 
 #Instrucciones para ejecurla en Minicube
-
+========================================
 En curso
