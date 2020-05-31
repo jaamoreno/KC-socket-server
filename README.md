@@ -64,8 +64,13 @@ curl http://172.19.0.3:8080/?accion2
 Desde el directorio k8s ejecutar los siguientes comandos:
 
 cd k8s
-
-sudo kubectl apply -f app-service.yaml, database-service.yaml, app-deployment.yaml, variables-env-configmap.yaml, database-deployment.yaml, database-claim0-persistentvolumeclaim.yaml, lognet-networkpolicy.yaml
+sudo kubectl apply -f app-service.yaml
+sudo kubectl apply -f database-service.yaml
+sudo kubectl apply -f app-deployment.yaml
+sudo kubectl apply -f variables-env-configmap.yaml
+sudo kubectl apply -f database-deployment.yaml
+sudo kubectl apply -f database-claim0-persistentvolumeclaim.yaml
+sudo kubectl apply -f lognet-networkpolicy.yaml
 
 
 Instrucciones para hacer uso de secretos para los datos sensibles (contraseña usuario BB.DD)
