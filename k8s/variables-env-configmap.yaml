@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  MYSQL_ALLOW_EMPTY_PASSWORD: yes
+  SUPERVISOR_DBHOST: kcdb_c
+  SUPERVISOR_DBNAME: dbDatabase
+  SUPERVISOR_DBPASS: dbPassword
+  SUPERVISOR_DBPORT: "3306"
+  SUPERVISOR_DBUSER: dbUser
+  SUPERVISOR_INTERVAL: "10"
+  SUPERVISOR_LISTENPORT: "8080"
+  SUPERVISOR_NIVELTRAZA: "40"
+kind: ConfigMap
+metadata:
+  labels:
+    io.kompose.service: app-variables-env
+  name: variables-env
