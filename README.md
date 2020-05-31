@@ -59,6 +59,15 @@ curl http://172.19.0.3:8080/?accion2
      <info>MANTENIMIENTO</info>
 
 
-#Instrucciones para ejecurla en Minicube
-----------------------------------------
-En curso
+#Instrucciones para ejecurla en Kubernetes
+------------------------------------------
+Desde el directorio k8s ejecutar los siguientes comandos:
+cd k8s
+sudo kubectl apply -f app-service.yaml, database-service.yaml, app-deployment.yaml, variables-env-configmap.yaml, database-deployment.yaml, database-claim0-persistentvolumeclaim.yaml, lognet-networkpolicy.yaml
+
+Instrucciones para hacer uso de secretos para los datos sensibles (contraseña usuario BB.DD)
+
+
+
+
+------------------------------------------
