@@ -1,0 +1,13 @@
+apiVersion: extensions/v1beta1
+kind: NetworkPolicy
+metadata:
+  name: lognet
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          io.kompose.network/lognet: "true"
+  podSelector:
+    matchLabels:
+      io.kompose.network/lognet: "true"
