@@ -78,9 +78,37 @@ sudo kubectl apply -f database-deployment.yaml
 sudo kubectl apply -f database-claim0-persistentvolumeclaim.yaml
 
 
-Instrucciones para hacer uso de secretos para los datos sensibles (contraseña usuario BB.DD)
 
+#Instrucciones para hacer uso de secretos para los datos sensibles
+..................................................................
+El único dado sensible es la contraseña de usuario de base de datos que se encuentra almacenada
+en claro en la variable de entorno SUPERVISOR_DBPASS
+Para ocultar esta informacion codificaría el contenido de esta variable en Base64:
 
+echo -n 'dbPassword' | base64
 
+ZGJQYXNzd29yZA==
 
-------------------------------------------
+y ese valor sería el que asignaría al contenido siguiente (fichero: secret.yaml)
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  password: ZGJQYXNzd29yZA==
+
+Después crear el secreto ----> sudo kubectl apply -f ./mysecret.yaml
+Y modificar la definicion del contenedor de la aplicacion (app-deployment.yaml) para que tome el valor de la variable de entorno SUPERVISOR_DBPASS mediante la instruccion: "env[].valueFrom.secretKeyRef."
+
+Modificando el fichero de definición del contenedor de la aplicación de la siguiente manera:
+
+  containers:
+  - name: app
+    env:
+      - name: SUPERVISOR_DBPASS
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: password
